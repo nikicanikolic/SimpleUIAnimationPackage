@@ -1,3 +1,4 @@
+// Version: 14112022
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -84,7 +85,7 @@ public class UIElementAnimation : AnimationGroup
     }
     public void ShowEndScale()
     {
-        gameObject.transform.localScale = startScale;
+        gameObject.transform.localScale = endScale;
     }
     #endregion
 
@@ -151,6 +152,30 @@ public class UIElementAnimation : AnimationGroup
     [SerializeField] public float endAlpha;
     private CanvasGroup canvasGroup;
 
+    #region Editor Functions
+    public void SetStartAlpha()
+    {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        startAlpha = canvasGroup.alpha;
+    }
+    public void SetEndAlpha()
+    {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        endAlpha = canvasGroup.alpha;
+    }
+
+    public void ShowStartAlpha()
+    {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = startAlpha;
+    }
+    public void ShowEndAlpha()
+    {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = endAlpha;
+    }
+    #endregion
+
     //Update Alpha
     private void UpdateAlpha(float alpha)
     {
@@ -193,13 +218,37 @@ public class UIElementAnimation : AnimationGroup
     }
     #endregion
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
+
         canvasGroup = GetComponent<CanvasGroup>();
         image = GetComponent<Image>();
         rectTransform = gameObject.GetComponent<RectTransform>();
 
         waitForAnimationTime = new WaitForSeconds(animationTime);
+
+        // Prepare for animation
+        if (move)
+        {
+            ShowStartPosition();
+        }
+        if (scale)
+        {
+            ShowStartScale();
+        }
+        if (rotate)
+        {
+            ShowStartRotation();
+        }
+        if (alphaFade)
+        {
+            canvasGroup.alpha = 0;
+        }
+        if (colorChange)
+        {
+            ShowStartColor();
+        }
     }
 
     public override void Play(UIAnimationState state)

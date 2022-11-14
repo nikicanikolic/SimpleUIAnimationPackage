@@ -1,3 +1,4 @@
+// Version: 14112022
 using UnityEngine;
 
 public enum UIAnimationState { Entry, Exit }

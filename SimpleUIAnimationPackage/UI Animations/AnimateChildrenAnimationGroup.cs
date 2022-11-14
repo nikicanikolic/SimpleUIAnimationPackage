@@ -1,3 +1,4 @@
+// Version: 14112022
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,7 +17,7 @@ public class AnimateChildrenAnimationGroup : AnimationGroup
     {
         GetChildren();
 
-        this.playing = true;        
+        this.playing = true;
         switch (state)
         {
             case UIAnimationState.Entry:
@@ -95,6 +96,7 @@ public class AnimateChildrenAnimationGroup : AnimationGroup
             foreach (AnimationGroup child in animations)
             {
                 child.Play(state);
+                yield return null;
                 yield return child.waitUntilNotPlaying;
             }
 

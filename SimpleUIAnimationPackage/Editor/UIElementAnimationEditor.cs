@@ -1,3 +1,4 @@
+// Version: 14112022
 using UnityEngine;
 using UnityEditor;
 
@@ -169,8 +170,30 @@ public class UIElementAnimationEditor : Editor
             {
                 // Start Alpha
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("startAlpha"));
+                // Start Alpha Buttons
+                GUILayout.BeginHorizontal("box");
+                if (GUILayout.Button("Set Start"))
+                {
+                    animation.SetStartAlpha();
+                }
+                if (GUILayout.Button("Show Start"))
+                {
+                    animation.ShowStartAlpha();
+                }
+                GUILayout.EndHorizontal();
                 // End Alpha
                 EditorGUILayout.PropertyField(serializedObject.FindProperty("endAlpha"));
+                // End Alpha Buttons
+                GUILayout.BeginHorizontal("box");
+                if (GUILayout.Button("Set End"))
+                {
+                    animation.SetEndAlpha();
+                }
+                if (GUILayout.Button("Show End"))
+                {
+                    animation.ShowEndAlpha();
+                }
+                GUILayout.EndHorizontal();
             }
             GUILayout.EndVertical();
         }
