@@ -12,11 +12,9 @@ public class AnimateChildrenAnimationGroupEditor : Editor
 
         // Children
         EditorGUILayout.PropertyField(serializedObject.FindProperty("animationType"));
+
         // Looping
-        if (animationGroup.animationType == ChildrenAnimationType.Series)
-        {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("loop"));
-        }
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("loop"));
 
         serializedObject.ApplyModifiedProperties();
     }

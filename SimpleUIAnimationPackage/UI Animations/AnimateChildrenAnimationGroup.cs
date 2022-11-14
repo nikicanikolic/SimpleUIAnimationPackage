@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum ChildrenAnimationType { Parallel, Series }
+public enum ChildrenAnimationType { Simultaneous, Consecutive }
 
 // Animation group that animates it's children.
 public class AnimateChildrenAnimationGroup : AnimationGroup
@@ -51,11 +51,11 @@ public class AnimateChildrenAnimationGroup : AnimationGroup
     {
         switch (animationType)
         {
-            case ChildrenAnimationType.Series:
+            case ChildrenAnimationType.Consecutive:
                 StartCoroutine(SeriesAnimation(UIAnimationState.Entry));
                 break;
 
-            case ChildrenAnimationType.Parallel:
+            case ChildrenAnimationType.Simultaneous:
                 StartCoroutine(ParallelAnimation(UIAnimationState.Entry));
                 break;
         }
@@ -65,11 +65,11 @@ public class AnimateChildrenAnimationGroup : AnimationGroup
     {
         switch (animationType)
         {
-            case ChildrenAnimationType.Series:
+            case ChildrenAnimationType.Consecutive:
                 StartCoroutine(SeriesAnimation(UIAnimationState.Exit));
                 break;
 
-            case ChildrenAnimationType.Parallel:
+            case ChildrenAnimationType.Simultaneous:
                 StartCoroutine(ParallelAnimation(UIAnimationState.Exit));
                 break;
         }

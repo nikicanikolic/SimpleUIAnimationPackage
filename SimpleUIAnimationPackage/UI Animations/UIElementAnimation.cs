@@ -14,8 +14,8 @@ public class UIElementAnimation : AnimationGroup
 
     #region Move
     public bool move;
-    [SerializeField] private AnimationCurve xMoveCurve;
-    [SerializeField] private AnimationCurve yMoveCurve;
+    [SerializeField] private AnimationCurve xMoveCurve = AnimationCurve.Linear(0, 0, 1, 1);
+    [SerializeField] private AnimationCurve yMoveCurve = AnimationCurve.Linear(0, 0, 1, 1);
     public Vector2 startPosition;
     public Vector2 endPosition;
     private RectTransform rectTransform;
@@ -65,8 +65,8 @@ public class UIElementAnimation : AnimationGroup
 
     #region Scale
     public bool scale;
-    [SerializeField] private AnimationCurve xScaleCurve;
-    [SerializeField] private AnimationCurve yScaleCurve;
+    [SerializeField] private AnimationCurve xScaleCurve = AnimationCurve.Linear(0, 0, 1, 1);
+    [SerializeField] private AnimationCurve yScaleCurve = AnimationCurve.Linear(0, 0, 1, 1);
     public Vector3 startScale = Vector3.zero;
     public Vector3 endScale = Vector3.one;
 
@@ -110,7 +110,7 @@ public class UIElementAnimation : AnimationGroup
 
     #region Rotate
     public bool rotate;
-    [SerializeField] private AnimationCurve zRotationCurve;
+    [SerializeField] private AnimationCurve zRotationCurve = AnimationCurve.Linear(0, 0, 1, 1);
     public Quaternion startRotation;
     public Quaternion endRotation;
 

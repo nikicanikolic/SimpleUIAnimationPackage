@@ -10,7 +10,7 @@ public class OnClickAnimationTrigger : MonoBehaviour
 {
     [SerializeField] List<AnimationGroup> animationToPlay;
 
-    private void Awake()
+    protected override void Awake()
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() => animationToPlay.ForEach(animation => animation.Play(UIAnimationState.Entry)));

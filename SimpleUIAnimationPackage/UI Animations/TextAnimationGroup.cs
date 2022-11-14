@@ -12,7 +12,7 @@ public class TextAnimationGroup : AnimationGroup
     [SerializeField] private TextAnimationType animationType;
     private TMP_Text textObjectToAnimate;
 
-    private void Awake()
+    protected override void Awake()
     {
         textObjectToAnimate = GetComponent<TMP_Text>();
     }
