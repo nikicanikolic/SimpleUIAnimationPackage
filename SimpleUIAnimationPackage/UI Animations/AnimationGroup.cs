@@ -13,7 +13,7 @@ public abstract class AnimationGroup : MonoBehaviour
     public WaitUntil waitUntilNotPlaying { get; protected set; }
 
     // Initializes WaitUntil.
-    private void Awake()
+    protected virtual void Awake()
     {
         this.waitUntilNotPlaying = new WaitUntil(() => !playing);
     }
